@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Top 25 Highest‑Grossing Movies (Worldwide)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --panel:#121a2a;
+      --ink:#e8eefc;
+      --muted:#9fb0d0;
+      --accent1:#6aa8ff;
+      --accent2:#a16eff;
+      --accent3:#22d3ee;
+      --ring: 0 0 0 2px rgba(106,168,255,.35), 0 10px 25px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(161,110,255,.15), transparent 60%),
+        radial-gradient(1200px 600px at 110% 0%, rgba(34,211,238,.11), transparent 60%),
+        linear-gradient(180deg, #0b0f19 0%, #0a1222 100%);
+      background-attachment: fixed;
+    }
+    .wrap{
+      max-width:1200px;
+      margin:40px auto;
+      padding:24px;
+    }
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:16px;
+      flex-wrap:wrap;
+    }
+    .title{
+      display:flex;align-items:center;gap:14px;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,.35));
+    }
+    .logo{
+      width:56px;height:56px; border-radius:16px;
+      background: conic-gradient(from 180deg at 50% 50%, var(--accent1), var(--accent2), var(--accent3), var(--accent1));
+      box-shadow: var(--ring);
+      display:grid;place-items:center;
+      color:#0b0f19;font-weight:800;
+    }
+    h1{margin:0;font-weight:800;font-size:clamp(26px,3vw,38px);letter-spacing:.3px}
+    .meta{
+      font-size:14px;color:var(--muted)
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:20px;
+      box-shadow: var(--ring);
+      overflow:hidden;
+    }
+    .controls{
+      display:flex;gap:10px;flex-wrap:wrap;
+      padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.06);
+      background: linear-gradient(180deg, rgba(106,168,255,.12), rgba(161,110,255,.10));
+    }
+    .search{
+      display:flex;gap:8px;align-items:center;flex:1;min-width:260px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      padding:10px 12px;border-radius:12px;
+    }
+    .search input{
+      width:100%; background:transparent;border:none;outline:none;color:var(--ink);
+      font-size:14px;
+    }
+    .tag{
+      font-size:12px;padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      cursor:default;
+    }
+    .table-wrap{
+      overflow:auto; max-height:70vh;
+    }
+    table{
+      width:100%; border-collapse:separate; border-spacing:0;
+      font-size:15px;
+    }
+    thead th{
+      position:sticky; top:0; z-index:2;
+      text-align:left; padding:14px 16px;
+      background:linear-gradient(180deg, rgba(11,15,25,.9), rgba(11,15,25,.7));
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid rgba(255,255,255,.12);
+      white-space:nowrap;
+    }
+    tbody td{
+      padding:14px 16px; border-bottom:1px dashed rgba(255,255,255,.08);
+    }
+    tbody tr{
+      transition: transform .15s ease, background-color .2s ease;
+    }
+    tbody tr:nth-child(odd){ background: rgba(255,255,255,.02); }
+    tbody tr:hover{
+      background: rgba(106,168,255,.10);
+      transform: translateY(-1px);
+    }
+    .rank{
+      display:inline-grid;place-items:center; width:34px;height:34px;border-radius:10px;
+      background:linear-gradient(180deg, rgba(106,168,255,.25), rgba(161,110,255,.25));
+      border:1px solid rgba(255,255,255,.12); font-weight:700;
+    }
+    .money{font-variant-numeric: tabular-nums; font-weight:600}
+    .year{opacity:.9}
+    .foot{
+      display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+      padding:16px;color:var(--muted);font-size:13px;
+      border-top:1px solid rgba(255,255,255,.06);
+      background:linear-gradient(180deg, rgba(11,15,25,.7), rgba(11,15,25,.6));
+    }
+    .pill{
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .hide{display:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <div class="logo">🎬</div>
+        <div>
+          <h1>Top 25 Highest‑Grossing Movies (Worldwide)</h1>
+          <div class="meta">Source: Wikipedia — List of highest‑grossing films (accessed 25 Aug 2025)</div>
+        </div>
+      </div>
+      <div class="meta">Made with ❤️ for IT varsity — Module‑1‑Assessment‑4</div>
+    </header>
+
+    <section class="card">
+      <div class="controls">
+        <div class="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.3-4.3m1.8-5.2A7.3 7.3 0 1111.2 4a7.3 7.3 0 017.3 7.3z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input id="q" placeholder="Filter by title or year…" oninput="filterRows()">
+        </div>
+        <span class="tag">Live data as of 25 Aug 2025</span>
+        <span class="tag">Hover a row ✨</span>
+      </div>
+
+      <div class="table-wrap">
+        <table id="movies">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Title</th>
+              <th>Year</th>
+              <th>Worldwide Gross</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data rows -->
+            <tr><td><span class="rank">1</span></td><td>Avatar</td><td class="year">2009</td><td class="money">$2,923,706,026</td></tr>
+            <tr><td><span class="rank">2</span></td><td>Avengers: Endgame</td><td class="year">2019</td><td class="money">$2,797,501,328</td></tr>
+            <tr><td><span class="rank">3</span></td><td>Avatar: The Way of Water</td><td class="year">2022</td><td class="money">$2,320,250,281</td></tr>
+            <tr><td><span class="rank">4</span></td><td>Titanic</td><td class="year">1997</td><td class="money">$2,257,844,554</td></tr>
+            <tr><td><span class="rank">5</span></td><td>Ne Zha 2</td><td class="year">2025</td><td class="money">$2,217,860,000</td></tr>
+            <tr><td><span class="rank">6</span></td><td>Star Wars: The Force Awakens</td><td class="year">2015</td><td class="money">$2,068,223,624</td></tr>
+            <tr><td><span class="rank">7</span></td><td>Avengers: Infinity War</td><td class="year">2018</td><td class="money">$2,048,359,754</td></tr>
+            <tr><td><span class="rank">8</span></td><td>Spider‑Man: No Way Home</td><td class="year">2021</td><td class="money">$1,922,598,800</td></tr>
+            <tr><td><span class="rank">9</span></td><td>Inside Out 2</td><td class="year">2024</td><td class="money">$1,698,863,816</td></tr>
+            <tr><td><span class="rank">10</span></td><td>Jurassic World</td><td class="year">2015</td><td class="money">$1,671,537,444</td></tr>
+            <tr><td><span class="rank">11</span></td><td>The Lion King</td><td class="year">2019</td><td class="money">$1,656,943,394</td></tr>
+            <tr><td><span class="rank">12</span></td><td>The Avengers</td><td class="year">2012</td><td class="money">$1,518,815,515</td></tr>
+            <tr><td><span class="rank">13</span></td><td>Furious 7</td><td class="year">2015</td><td class="money">$1,515,341,399</td></tr>
+            <tr><td><span class="rank">14</span></td><td>Top Gun: Maverick</td><td class="year">2022</td><td class="money">$1,495,696,292</td></tr>
+            <tr><td><span class="rank">15</span></td><td>Frozen II</td><td class="year">2019</td><td class="money">$1,450,026,933</td></tr>
+            <tr><td><span class="rank">16</span></td><td>Barbie</td><td class="year">2023</td><td class="money">$1,447,038,421</td></tr>
+            <tr><td><span class="rank">17</span></td><td>Avengers: Age of Ultron</td><td class="year">2015</td><td class="money">$1,402,809,540</td></tr>
+            <tr><td><span class="rank">18</span></td><td>The Super Mario Bros. Movie</td><td class="year">2023</td><td class="money">$1,360,847,665</td></tr>
+            <tr><td><span class="rank">19</span></td><td>Black Panther</td><td class="year">2018</td><td class="money">$1,347,280,838</td></tr>
+            <tr><td><span class="rank">20</span></td><td>Harry Potter and the Deathly Hallows – Part 2</td><td class="year">2011</td><td class="money">$1,342,139,727</td></tr>
+            <tr><td><span class="rank">21</span></td><td>Deadpool &amp; Wolverine</td><td class="year">2024</td><td class="money">$1,338,073,645</td></tr>
+            <tr><td><span class="rank">22</span></td><td>Star Wars: The Last Jedi</td><td class="year">2017</td><td class="money">$1,332,539,889</td></tr>
+            <tr><td><span class="rank">23</span></td><td>Jurassic World: Fallen Kingdom</td><td class="year">2018</td><td class="money">$1,308,473,425</td></tr>
+            <tr><td><span class="rank">24</span></td><td>Frozen</td><td class="year">2013</td><td class="money">$1,290,000,000</td></tr>
+            <tr><td><span class="rank">25</span></td><td>Beauty and the Beast</td><td class="year">2017</td><td class="money">$1,263,521,126</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="foot">
+        <div>
+          Data from <a href="https://en.wikipedia.org/wiki/List_of_highest-grossing_films" target="_blank" rel="noopener">Wikipedia</a>.
+          Figures are nominal (not adjusted for inflation) and include re‑releases where noted.
+        </div>
+        <div class="pill">Updated: 25 Aug 2025</div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function filterRows(){
+      const q = document.querySelector('#q').value.toLowerCase().trim();
+      const rows = document.querySelectorAll('#movies tbody tr');
+      rows.forEach(r => {
+        const text = r.innerText.toLowerCase();
+        r.style.display = text.includes(q) ? '' : 'none';
+      })
+    }
+  </script>
+</body>
+</html>
